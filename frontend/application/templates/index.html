@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+{% extends 'layout.html' %}
+{% block body_content %}
+
+<p>Character creation has made:</p>
+<p>{{ gender }} {{ race }}</p>
+<p>Overall stats are : {{ final_char }}</p>
+<p>To generate a new Character ..</p>
+<p>Click the button</p>
+<button onClick="window.location.reload();">Generate Another Character</button>
+
+{% endblock body_content %}
