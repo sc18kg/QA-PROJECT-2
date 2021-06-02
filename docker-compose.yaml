@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   nginx:
-    image: Kieron/nginx:latest
+    image: nginx:latest
     deploy:
       replicas: 2
     ports:
@@ -14,7 +14,7 @@ services:
       target: /etc/nginx/nginx.conf
       
   app1:
-    image: Kieron/frontend:latest
+    image: sc18kg/frontend:latest
     build: ./frontend
     deploy:
       replicas: 2
@@ -26,7 +26,7 @@ services:
       DB_URI: ${DATABASE_URI}
 
   app2:
-    image: Kieron/app-2:latest
+    image: sc18kg/app-2:latest
     build: ./app-2
     deploy:
       replicas: 2
@@ -36,7 +36,7 @@ services:
       protocol: tcp
 
   app3:
-    image: Kieron/app-3:latest
+    image: sc18kg/app-3:latest
     build: ./app-3
     deploy:
       replicas: 2
@@ -46,7 +46,7 @@ services:
       protocol: tcp
 
   app4:
-    image: Kieron/app-4:latest
+    image: sc18kg/app-4:latest
     build: ./app-4
     deploy:
       replicas: 2
@@ -56,7 +56,7 @@ services:
       protocol: tcp
 
   database:
-    image: Kieron/mysql:5.7
+    image: mysql:5.7
     ports:
     - target: 3306
       published: 3306

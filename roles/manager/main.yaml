@@ -1,7 +1,7 @@
 - name: "clone git repo" 
   git:
     repo: https://github.com/sc18kg/QA-PROJECT-2.git
-    dest: /home/QA-PROJECT-2
+    dest: /home/Kieron/QA-PROJECT-2
     update: yes
 
 - name: "initialise swarm"

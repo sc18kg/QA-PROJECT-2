@@ -28,7 +28,7 @@
 
 - name: "add user to the docker group"
   user:
-        name: "jenkins-vm"
+        name: "ansible"
         group: docker
         state: present
 
