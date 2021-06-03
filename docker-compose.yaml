@@ -1,55 +1,50 @@
 version: "3.8"
 services:
   nginx:
+    container_name: nginx
     image: nginx:latest
-    deploy:
-      replicas: 2
     ports:
     - target: 80
       published: 80
       protocol: tcp
     volumes:
     - type: bind
-      source: ./nginx/nginx.conf
+      source: ./nginx/nginx.config
       target: /etc/nginx/nginx.conf
       
   app1:
+    container_name: frontend
     image: sc18kg/frontend:latest
     build: ./frontend
-    deploy:
-      replicas: 2
     ports:
     - target: 5000
       published: 5000
       protocol: tcp
     environment:
-      DB_URI: ${DATABASE_URI}
+      DATABASE_URI: ${DATABASE_URI}
 
   app2:
+    container_name: app-2
     image: sc18kg/app-2:latest
     build: ./app-2
-    deploy:
-      replicas: 2
     ports:
     - target: 5001
       published: 5001
       protocol: tcp
 
   app3:
+    container_name: app-3
     image: sc18kg/app-3:latest
     build: ./app-3
-    deploy:
-      replicas: 2
     ports:
     - target: 5002
       published: 5002
       protocol: tcp
 
   app4:
+    container_name: app-4
     image: sc18kg/app-4:latest
     build: ./app-4
-    deploy:
-      replicas: 2
     ports:
     - target: 5003
       published: 5003

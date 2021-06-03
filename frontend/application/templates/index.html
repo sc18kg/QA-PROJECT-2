@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 {% extends 'layout.html' %}
 {% block body_content %}
 
@@ -7,6 +6,16 @@
 <p>Overall stats are : {{ final_char }}</p>
 <p>To generate a new Character ..</p>
 <p>Click the button</p>
-<button onClick="window.location.reload();">Generate Another Character</button>
-
+<div class='form'>
+    <form method='POST' action='' >
+        {{form.hidden_tag() }}
+        {{form.name.label}} {{form.name}}
+        {% if form.name.errors %}
+            {% for error in form.name.errors %}
+                {{error}}
+            {% endfor %}
+        {% endif %}
+        <br>
+        {{form.submit}}
+    </form>
 {% endblock body_content %}
