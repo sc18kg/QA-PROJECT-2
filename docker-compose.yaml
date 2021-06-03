@@ -1,0 +1,72 @@
+version: "3.8"
+services:
+  nginx:
+    image: nginx:latest
+    deploy:
+      replicas: 2
+    ports:
+    - target: 80
+      published: 80
+      protocol: tcp
+    volumes:
+    - type: bind
+      source: ./nginx/nginx.conf
+      target: /etc/nginx/nginx.conf
+      
+  app1:
+    image: sc18kg/frontend:latest
+    build: ./frontend
+    deploy:
+      replicas: 2
+    ports:
+    - target: 5000
+      published: 5000
+      protocol: tcp
+    environment:
+      DB_URI: ${DATABASE_URI}
+
+  app2:
+    image: sc18kg/app-2:latest
+    build: ./app-2
+    deploy:
+      replicas: 2
+    ports:
+    - target: 5001
+      published: 5001
+      protocol: tcp
+
+  app3:
+    image: sc18kg/app-3:latest
+    build: ./app-3
+    deploy:
+      replicas: 2
+    ports:
+    - target: 5002
+      published: 5002
+      protocol: tcp
+
+  app4:
+    image: sc18kg/app-4:latest
+    build: ./app-4
+    deploy:
+      replicas: 2
+    ports:
+    - target: 5003
+      published: 5003
+      protocol: tcp
+
+  database:
+    image: mysql:5.7
+    ports:
+    - target: 3306
+      published: 3306
+    environment: 
+      MYSQL_ROOT_PASSWORD: MYSQL_ROOT_PASSWORD
+      MYSQL_DATABASE: project_db
+    volumes: 
+      - type: volume
+        source: database-volume
+        target: /var/lib/mysql
+
+volumes: 
+  database-volume:
