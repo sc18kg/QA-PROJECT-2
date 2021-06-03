@@ -61,24 +61,24 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app2
+  name: app-2
   labels:
-    app: app2
+    app: app-2
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: app2
+      app: app-2
   template:
     metadata:
       labels:
-        app: app2
+        app: app-2
     spec:
       containers:
-        - name: app2
-          image: Kieron/app2
+        - name: app-2
+          image: Kieron/app-2
           ports:
-          - name: app2-port
+          - name: app-2-port
             containerPort: 5001
 
 ---
@@ -86,22 +86,22 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app3
+  name: app-3
   labels:
-    app: app3
+    app: app-3
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: app3
+      app: app-3
   template:
     metadata:
       labels:
-        app: app3
+        app: app-3
     spec:
       containers:
-        - name: app3
-          image: Kieron/app3
+        - name: app-3
+          image: Kieron/app-3
           ports:
           - name: app3-port
             containerPort: 5002
@@ -111,24 +111,24 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app4
+  name: app-4
   labels:
-    app: app4
+    app: app-4
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: app4
+      app: app-4
   template:
     metadata:
       labels:
-        app: app4
+        app: app-4
     spec:
       containers:
-        - name: app4
-          image: Kieron/app4
+        - name: app-4
+          image: Kieron/app-4
           ports:
-          - name: app4-port
+          - name: app-4-port
             containerPort: 5003
 
 ---
@@ -165,10 +165,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: app2
+  name: app-2
 spec:
   selector:
-    app: app2
+    app: app-2
   ports: 
   - protocol: TCP
     port: 5001
@@ -180,10 +180,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: app3
+  name: app-3
 spec:
   selector:
-    app: app3
+    app: app-3
   ports:
   - protocol: TCP
     port: 5002
@@ -195,10 +195,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: app4
+  name: app-4
 spec:
   selector:
-    app: app4
+    app: app-4
   ports:
   - protocol: TCP
     port: 5003
